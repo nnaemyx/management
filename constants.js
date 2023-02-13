@@ -2,14 +2,14 @@ const constants = {
     DATABASE_URL : process.env.DATABASE_URL,
 
     ROOMNAME: {
-            _id: number,
+            _id: Number,
             name: String,
-            roomtype : number,
-            price: number
+            roomtype : Number,
+            price: Number
     },
 
     ROOM_TYPES: {
-            _id: number,
+            _id: Number,
             name: String
     },
 
