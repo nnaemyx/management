@@ -35,12 +35,22 @@ router.post("/", asyncHandler(async(req, res) => {
 }));
 
 // fetch all room types
-router.get("/rooms-types", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const roomexists = await Roomtype.frrr();
-    res.status(200).send({message: "rooms "});
+    const { name } = req.body;
+    if(!name) {
+      res.status(400).send({message: "rooms "});
+    }
+    const roomexists = await Roomtype.find({}).toArray(function (err, res) {
+      if (err) throw err;
+      console.log("Found the following records");
+      console.log(res)
+    });
+    if(roomexists) {
+      res.status(200).send({message: "rooms "});
+    }
   } catch (err) {
-    res.status(500).send({ message: MESSAGE.ERROR });
+    res.status(500).send({ message: "fool" });
   }
 });
 
